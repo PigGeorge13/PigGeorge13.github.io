@@ -90,7 +90,7 @@ rss:
 #since: 2015
 
 # icon between year and author @Footer
-authoricon: heart
+authoricon: id-card
 
 # Footer `powered-by` and `theme-info` copyright
 copyright: false
@@ -213,9 +213,10 @@ font:
 # Social Links
 # Key is the link label showing to end users.
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
-#social:
+social:
   #LinkLabel: Link
-
+  GitHub: https://github.com/PigGeorge13/
+  Weibo: https://weibo.com/5141662786/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1
 
 # Social Links Icons
 # Icon Mapping:
@@ -234,6 +235,18 @@ social_icons:
 # Sidebar Avatar
 # in directory: /assets/images/avatar.gif
 #avatar: images/pg13.png
+avatar:
+  # in theme directory(source/images): /images/avatar.gif
+  # in site  directory(source/uploads): /uploads/avatar.gif
+  # You can also use other linking images.
+  url: /images/pg13.png  #将我们的头像图片放置在blog/themes/next/source/images目录下，填写具体地址
+  # If true, the avatar would be dispalyed in circle.
+  rounded: true #鼠标放在头像上时是否旋转
+  # The value of opacity should be choose from 0 to 1 to set the opacity of the avatar.
+  opacity: 1 #头像放缩指数
+  # If true, the avatar would be rotated with the cursor.
+  rotated: true #头像是否设为圆形，否则为矩形
+
 
 
 # Table Of Contents in the Sidebar
@@ -317,8 +330,8 @@ post_meta:
 # Post wordcount display settings
 post_wordcount:
   item_text: true
-  wordcount: false
-  min2read: false
+  wordcount: true
+  min2read: true
   separated_meta: true
 
 # Wechat Subscriber
@@ -631,7 +644,12 @@ pace: false
 pace_theme: pace-theme-minimal
 
 # Canvas-nest
-canvas_nest: false
+canvas_nest: true
+  onmobile: true
+  color: '0,0,0'
+  opacity: 0.5
+  zIndex: -1
+  count: 200
 
 # three_waves
 three_waves: false
