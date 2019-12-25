@@ -644,13 +644,7 @@ pace: false
 pace_theme: pace-theme-minimal
 
 # Canvas-nest
-canvas_nest: 
-  enable:true
-  onmobile: true
-  color: '0,0,0'
-  opacity: 0.5
-  zIndex: -1
-  count: 200
+canvas_nest: true
 
 # three_waves
 three_waves: false
