@@ -13,13 +13,6 @@
    transition: 1.4s all;
 }
 
-.site-author-image:hover {
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -transform: rotate(360deg);
-}
-
 .site-author-name {
   margin: $site-author-name-margin;
   text-align: $site-author-name-align;
@@ -33,3 +26,11 @@
   font-size: $site-description-font-size;
   color: $site-description-color;
 }
+
+.site-author-image:hover {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -transform: rotate(360deg);
+}
+
