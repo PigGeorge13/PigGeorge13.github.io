@@ -5,8 +5,8 @@
 
 # Site
 title: ROS
-subtitle:
-description:
+subtitle: recording my life
+description: 天道酬勤
 author: Tu
 # Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
 language: en
@@ -644,7 +644,7 @@ pace: false
 pace_theme: pace-theme-minimal
 
 # Canvas-nest
-canvas_nest: true
+canvas_nest: false
 
 # three_waves
 three_waves: false
@@ -653,7 +653,7 @@ three_waves: false
 canvas_lines: false
 
 # canvas_sphere
-canvas_sphere: false
+canvas_sphere: true
 
 # Only fit scheme Pisces
 # Canvas-ribbon
