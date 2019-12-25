@@ -1,113 +1,65 @@
 ---
 layout: post
-title: "MathJax with Jekyll"
-date: 2014-02-16
-categories: opinion
-tags: [resources, jekyll]
-image: http://gastonsanchez.com/images/blog/mathjax_logo.png
+title: "ROS 参考资料"
+date: 2019-12-25
+categories: References
+tags: [resources]
 ---
 
-One of the rewards of switching my website to [Jekyll](http://jekyllrb.com/) is the
-ability to support **MathJax**, which means I can write LaTeX-like equations that get
-nicely displayed in a web browser, like this one \\( \sqrt{\frac{n!}{k!(n-k)!}} \\) or
-this one \\( x^2 + y^2 = r^2 \\).
+学习**ROS**过程中可供参考的书目、学习资料与扩展阅读。 
 
 <!--more-->
 
-<img class="centered" src="https://www.mathjax.org/badge/mj-logo.svg" />
+### 参考书目
 
-### What's MathJax?
+1.mastering ROS for Robotics Programming [(github.com/qboticslabs/mastering_ros)](https://github.com/qboticslabs/mastering_ros) 
 
-If you check MathJax website [(www.mathjax.org)](http://www.mathjax.org/) you'll see
-that it *is an open source JavaScript display engine for mathematics that works in all
-browsers*.
+2.ROS By Example Vol1 [(github.com/pirobot/rbx1)](https://github.com/pirobot/rbx1) 
 
+3.ROS By Example Vol2 [(github.com/pirobot/rbx2)](https://github.com/pirobot/rbx2) 
 
-### How to implement MathJax with Jekyll
+4.Programming Robots With ROS [(github.com/osrf/rosbook)](https://github.com/osrf/rosbook) 
 
-I followed the instructions described by Dason Kurkiewicz for
-[using Jekyll and Mathjax](http://dasonk.github.io/blog/2012/10/09/Using-Jekyll-and-Mathjax/).
+5.ROS Robotics By Example [(github.com/FairchildC/ROS-Robotics-by-Example)](https://github.com/FairchildC/ROS-Robotics-by-Example) 
 
-Here are some important details. I had to modify the Ruby library for Markdown in
-my ```_config.yml``` file. Now I'm using redcarpet so the corresponding line in the
-configuration file is: ```markdown: redcarpet```
+6.Learning ROS for Robotics Programming [(github.com/AaronMR/Learning_ROS_for_Robotics_Programming_2nd_edition)](https://github.com/AaronMR/Learning_ROS_for_Robotics_Programming_2nd_edition) 
 
-To load the MathJax javascript, I added the following lines in my layout ```post.html```
-(located in my folder ```_layouts```)
+6.A Gentle Introduction to ROS [(github.com/iNewCOS/agitr)](https://github.com/iNewCOS/agitr) 
 
-{% highlight r %}
-<script type="text/javascript"
-    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-{% endhighlight %}
+7.Effective Robotics Programming With ROS [(github.com/rosbook/effective_robotics_programming_with_ros)](https://github.com/rosbook/effective_robotics_programming_with_ros)
 
-Of course you can choose a different file location in your jekyll layouts. 
+8.ROS Robotics Projects [(github.com/PacktPublishing/ROS-Robotics-Projects)](https://github.com/PacktPublishing/ROS-Robotics-Projects)  
 
-Note that by default, the **tex2jax** preprocessor defines the
-LaTeX math delimiters, which are ```\\(...\\)``` for in-line math, and ```\\[...\\]``` for
-displayed equations. It also defines the TeX delimiters ```$$...$$``` for displayed
-equations, but it does not define ```$...$``` as in-line math delimiters. To enable in-line math delimiter with ```$...$```, please use the following configuration:
-
-{% highlight r %}
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    processEscapes: true
-  }
-});
-</script>
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-{% endhighlight %}
+9.ROS Robot Programming [(community.robotsource.org/t/download-the-ros-robot-programming-book-for-free/51)](https://community.robotsource.org/t/download-the-ros-robot-programming-book-for-free/51)
 
 
-### A Couple of Examples
+### 参考资料
 
-Here's a short list of examples. To know more about the details behind MathJax, you can
-always checked the provided documentation available at
-[http://docs.mathjax.org/en/latest/](http://docs.mathjax.org/en/latest/)
+1.ROS wiki [(wiki.ros.org)](https://wiki.ros.org)
 
-Let's try a first example. Here's a dummy equation:
+2.ROS answers [(answers.ros.org)](https://answers.ros.org)
 
-$$a^2 + b^2 = c^2$$
+3.古月居 [(www.guyuehome.com)](https://www.guyuehome.com)
 
-How do you write such expression? Very simple: using **double dollar** signs
+4.Exbot易科机器人实验室 [(blog.exbot.net)](https://blog.exbot.net)
 
-{% highlight r %}
-$$a^2 + b^2 = c^2$$
-{% endhighlight %}
+5.各种ROS博客、论坛、公众号、ROSCon等
 
-To display inline math use ```\\( ... \\)``` like this ```\\( sin(x^2) \\)``` which gets
-rendered as \\( sin(x^2) \\)
+6.《ROS机器人开发实践》
 
+### 拓展阅读
 
-Here's another example using type ```\mathsf```
+·ROS Turns 10!
+[(www.ros.org/news/2017/11/ros-turn-10.html)](https://www.ros.org/news/2017/11/ros-turn-10.html)
 
-{% highlight r %}
-$$ \mathsf{Data = PCs} \times \mathsf{Loadings} $$
-{% endhighlight %}
+·Powering the world's robots-10 years of ROS
+[(robotics.sciencemag.org/content/2/11/eaar1868.full)](https://robotics.sciencemag.org/content/2/11/eaar1868.full)
 
-which gets displayed as
+·Apollo ROS 有何不同
+[(blog.exbot.net/archives/3437)](https://blog.exbot.net/archives/3437)
 
-$$ \mathsf{Data = PCs} \times \mathsf{Loadings} $$
+·RoboEarth-A World Wide Web for Robots
+[(roboearth.ethz.ch)](https://roboearth.ethz.ch)
 
-Or even better:
-
-{% highlight r %}
-\\[ \mathbf{X} = \mathbf{Z} \mathbf{P^\mathsf{T}} \\]
-{% endhighlight %}
-
-is displayed as
-
-\\[ \mathbf{X} = \mathbf{Z} \mathbf{P^\mathsf{T}} \\]
-
-If you want to use subscripts like this \\( \mathbf{X}\_{n,p} \\) you need to scape the
-underscores with a backslash like so ``` \mathbf{X}\_{n,p} ```:
-
-{% highlight r %}
-$$ \mathbf{X}\_{n,p} = \mathbf{A}\_{n,k} \mathbf{B}\_{k,p} $$
-{% endhighlight %}
-
-will be displayed as
-
-\\[ \mathbf{X}\_{n,p} = \mathbf{A}\_{n,k} \mathbf{B}\_{k,p} \\]
+·历届ROSCon演讲视频和ppt
+[(roscon.ros.org)](https://roscon.ros.org)
