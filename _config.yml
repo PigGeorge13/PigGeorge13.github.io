@@ -355,10 +355,10 @@ custom_logo:
 # https://github.com/chriskempson/tomorrow-theme
 highlight_theme: night
 # Add copy button on codeblock
-  copy_button:
-    enable: true
-    # Show text copy result
-    show_result: true
+copy_button:
+   enable: true
+   # Show text copy result
+   show_result: true
 
 # ---------------------------------------------------------------
 # Third Party Services Settings
