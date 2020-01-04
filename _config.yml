@@ -349,16 +349,19 @@ custom_logo:
   image:
 
 
-# Code Highlight theme
-# Available value:
-#    normal | night | night eighties | night blue | night bright
-# https://github.com/chriskempson/tomorrow-theme
-highlight_theme: night
-# Add copy button on codeblock
-copy_button:
-   enable: true
-   # Show text copy result
-   show_result: true
+codeblock:
+ # Code Highlight theme
+ # Available value:
+ #    normal | night | night eighties | night blue | night bright
+ # https://github.com/chriskempson/tomorrow-theme
+ highlight_theme: night
+ # Add copy button on codeblock
+ copy_button:
+    enable: true
+    #Show text copy result
+    show_result: true
+    # Available values: default | flat mac
+    style: mac
 
 # ---------------------------------------------------------------
 # Third Party Services Settings
