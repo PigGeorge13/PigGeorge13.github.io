@@ -32,7 +32,7 @@ catkin_make
 
 ### 创建launch文件
 
-需要在上节中的.launch文件中加入：
+需要在上节中运行的xacro模型文件的.launch文件中加入：
 
 ```
 	<node name="arbotix" pkg="arbotix_python" type="arbotix_driver" output="screen">
@@ -69,4 +69,3 @@ controllers:{
 运行.launch文件和键盘控制
 
 
-## wiki教程
