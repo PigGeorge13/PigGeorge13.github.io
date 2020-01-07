@@ -1,16 +1,16 @@
 ---
-title: URDF
+title: URDF建模与xacro优化
 date: 2020-01-06
 categories: tutorial
-tags: [URDF]
+tags: [建模]
 ---
 
-<center>URDF机器人建模</center>
+<center>URDF机器人建模与xacro建模</center>
 
 <!-- more -->
 
 
-## 什么是URDF
+## URDF
 
 ·Unified Robot Description Format,统一机器人描述格式
 
@@ -20,9 +20,9 @@ tags: [URDF]
 
 ·ROS同时也提供URDF文件的C++解析
 
-## URDF标签
+### URDF主标签
 
-### `<robot>`
+#### `<robot>`标签
 
 ·完整的机器人模型的最顶层标签
 
@@ -41,9 +41,8 @@ tags: [URDF]
 
 完整的机器人模型由一系列`<link>`和`<joint>`组成
 
-<center>****************************************************************</center>
 
-### `<link>`
+#### `<link>`标签
 
 ·描述机器人某个刚体部分的外观和物理属性
 
@@ -82,9 +81,9 @@ tags: [URDF]
     </link>
 ```
 
-<center>****************************************************************</center>
 
-### `<joint>`
+
+#### `<joint>`标签
 
 ·描述关节的运动学和动力学属性
 
@@ -132,7 +131,7 @@ tags: [URDF]
   </joint>
 ```
 
-## urdf功能包的文件结构
+### urdf功能包的文件结构
 
 ·urdf：存放机器人模型的URDF或xacro文件
 
@@ -142,7 +141,7 @@ tags: [URDF]
 
 ·config：保存rviz的配置文件
 
-## launch文件的编写
+### launch文件的编写
 
 ```
 <launch>
@@ -164,13 +163,101 @@ tags: [URDF]
 
 launch文件基本只需要改第一行的文件地址。
 
-## 查看URDF整体结构
+### 查看URDF整体结构
 
 ```
 urdf_to_graphiz name.urdf
+```
+
+### URDF缺点
+
+·建模代码冗长
+
+·修改参数麻烦，不利于二次开发
+
+·没有参数计算功能
+
+##　URDF建模优化--xacro建模
+
+·精简模型代码：
+
+创建宏定义、文件包含
+
+·可供编程接口
+
+常量、变量、数学计算、条件语句
+
+### 常量定义
+
+定义：
+```
+<xacro:property name="M_PI" value="3.14159" />
+```
+
+使用：
+```
+<origin:xyz="0 0 0" rpy="${M_PI/2} 0 0" />
+```
+
+### 数学计算
+
+```
+<origin xyz="0 ${(motor_length+wheel_length)/2} 0" rpy="0 0 0"   />
+```
+
+注：所有运算都会转换为浮点计算，以保证运算精度
+
+### 宏定义
+
+定义：
+
+```
+<xacro:macro name="name" params="A B C">
+......
+</xacro:macro>
+```
+
+调用：
+```
+<name A="A_value" B="B_value" C="C_value" />
+```
+
+### 文件包含
+
+```
+<xacro:include filename="$(find mbot_description)/urdf/xacro/mbot_base.xacro">
+```
+
+### launch文件的编写
+
+与urdf的.launch文件类似，需要加一个xacro的解析器
+
+```
+<launch>
+	<arg name="model" default="$(find xacro)/xacro --inorder '$(find mbot_description)/urdf/xacro/mbot.xacro'" />
+	<arg name="gui" default="true" />
+
+	<param name="robot_description" command="$(arg model)" />
+
+    <!-- 设置GUI参数，显示关节控制插件 -->
+	<param name="use_gui" value="$(arg gui)"/>
+
+    <!-- 运行joint_state_publisher节点，发布机器人的关节状态  -->
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+	<!-- 运行robot_state_publisher节点，发布tf  -->
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+    <!-- 运行rviz可视化界面 -->
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find mbot_description)/config/mbot.rviz" required="true" />
+
+</launch>
 ```
 
 ## wiki教程
 
 ·ROS URDF Turtorials
 [(wiki.ros.org/urdf/Turtorials)](http://wiki.ros.org/urdf/Turtorials)
+
+·ROS xacro
+[(wiki.ros.org/xacro)](http://wiki.ros.org/xacro)
